@@ -18,6 +18,7 @@ exports.pins = {
 };
 
 exports.init = function(pins) {
+	makeSurePins(pins);
 	board.screen = new require("Screen.js");
 	board.touchButton = new require("TouchButton.js");
 	board.buzzer = new require("Buzzer.js");
@@ -25,6 +26,32 @@ exports.init = function(pins) {
 	board.buzzer.init(pins.buzzerPin);
 	board.touchButton.init(pins.touchPin);
 }
+
+//Change the color of the screen every half second
+exposts.changeColors = function(interval) {
+	var lengthOfColors = board.screen.colors.length;
+	var i = 0;
+	interval = interval ? interval : 500;
+	setInterval(function() {
+		if (i == lengthOfColors) {
+			i = 0;
+		}
+		board.screen.colors[i]();
+		i++;
+	}, interval);
+}
+
+
+function makeSurePins(pins) {
+	if !(pins) {
+		return;
+	}
+	else {
+		console.log("ERROR   THE PINS are missing from the setup of the board...");
+	}
+}
+
+
 
 
 

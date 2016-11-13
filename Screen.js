@@ -6,23 +6,40 @@ exports.init = function (pin) {
 	screen = new (require("jsupm_i2clcd").Jhd1313m1)(i2cBusPin, 0x3E, 0x62);
 }
 
-exports.whiteMessage = function(string) { 
-	message(string);
+exports.white = function() { 
 	screen.setColor.apply(screen, color.white); 
 }
 
-exports.redMessage = function(string) {
-	message(string);
+exports.red = function() {
 	screen.setColor.apply(screen, color.red); 
 }
 
-exports.greenMessage = function(string) {
-	message(string);
+exports.green = function() {
 	screen.setColor.apply(screen, color.green); 
 }
 
-var message = function(string) {
-	while (string.length < 16) { string += " "; }
+exports.blue = function() {
+	screen.setColor.apply(screen, color.blue);
+}
+
+exports.changeColor = function(red, green, blue) {
+	screen.setColor.apply(screen, [red, green, blue]);
+}
+
+exports.topDisplay = function(string) {
 	screen.setCursor(0, 0);
+	setDisplay(string);
+}
+
+exports.bottomDisplay = function(string) {
+	screen.setCursor(1, 0);
+	setDisplay(string);
+}
+
+var setDisplay = function(string) {
+	while (string.length < 16) { string += " "; }
 	screen.write(string);
 }
+
+exports.colors = [white, red, green, blue];
+
