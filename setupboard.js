@@ -17,18 +17,22 @@ exports.pins = {
 	i2cBusPin: null
 };
 
-exports.init = function(pins) {
+var init = function(pins){
 	makeSurePins(pins);
-	board.screen = new require("Screen.js");
-	board.touchButton = new require("TouchButton.js");
-	board.buzzer = new require("Buzzer.js");
+	board.screen = new require("./Screen.js");
+	board.touchButton = new require("./TouchButton.js");
+	board.buzzer = new require("./Buzzer.js");
 	board.screen.init(pins.i2cBusPin);
-	board.buzzer.init(pins.buzzerPin);
-	board.touchButton.init(pins.touchPin);
+	// board.buzzer.init(pins.buzzerPin);
+	// board.touchButton.init(pins.touchPin);
 }
 
+
+exports.init = init;
+
+
 //Change the color of the screen every half second
-exposts.changeColors = function(interval) {
+exports.changeColors = function(interval) {
 	var lengthOfColors = board.screen.colors.length;
 	var i = 0;
 	interval = interval ? interval : 500;
@@ -43,15 +47,11 @@ exposts.changeColors = function(interval) {
 
 
 function makeSurePins(pins) {
-	if !(pins) {
+	console.log(pins);
+	if (!pins) {
 		return;
 	}
 	else {
-		console.log("ERROR   THE PINS are missing from the setup of the board...");
+		console.log("ERROR THE PINS are missing from the setup of the board...");
 	}
 }
-
-
-
-
-

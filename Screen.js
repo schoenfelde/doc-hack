@@ -7,19 +7,19 @@ exports.init = function (pin) {
 }
 
 exports.white = function() { 
-	screen.setColor.apply(screen, color.white); 
+	screen.setColor.apply(screen, colors.white); 
 }
 
 exports.red = function() {
-	screen.setColor.apply(screen, color.red); 
+	screen.setColor.apply(screen, colors.red); 
 }
 
 exports.green = function() {
-	screen.setColor.apply(screen, color.green); 
+	screen.setColor.apply(screen, colors.green); 
 }
 
 exports.blue = function() {
-	screen.setColor.apply(screen, color.blue);
+	screen.setColor.apply(screen, colors.blue);
 }
 
 exports.changeColor = function(red, green, blue) {
@@ -41,5 +41,4 @@ var setDisplay = function(string) {
 	screen.write(string);
 }
 
-exports.colors = [white, red, green, blue];
-
+exports.colors = colors;
