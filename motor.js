@@ -109,3 +109,6 @@ myUln200xa_obj.stepUnitOfTotalAndReturn = function(unitsToStep, maximumUnits)
 
 myUln200xa_obj.stepPercentAndReturn(25);
 myUln200xa_obj.stepUnitOfTotalAndReturn(300, 1000);
+
+
+exports.motor = myUln200xa_obj;
