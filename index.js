@@ -86,8 +86,8 @@ var outputCommand = function(msg,color) {
 	board.green();
 }
 
-var administerDrug = function(measurement) {
-       m.motor.goForwardPercentAndReturn(5,measurement);
+var administerDrug = function(amount){
+       m.motor.stepUnitOfTotalAndReturn(amount,1000);
 }
 
 main();
